@@ -1,9 +1,6 @@
 describe('Cenários de testes para Login de user no BugBank', () => {
   beforeEach(() => {
     cy.visit('https://bugbank.netlify.app/#');
-    const userEmail = 'testeLogin@bugbank.com';
-    const userName = 'Pericles da Silva';
-    const userPassword = 'exaltaSambaEraBomDemais123#$';
   });
 
   it('Fazer login com sucesso - conta sem saldo', () => {
