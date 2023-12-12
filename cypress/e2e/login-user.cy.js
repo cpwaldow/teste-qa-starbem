@@ -1,4 +1,4 @@
-describe('Cenários de testes para Login de user no BugBank', () => {
+describe('Cenários de sucesso para Login de user no BugBank', () => {
   beforeEach(() => {
     cy.visit('https://bugbank.netlify.app/#');
   });
@@ -60,7 +60,12 @@ describe('Cenários de testes para Login de user no BugBank', () => {
     cy.contains('Saldo em conta R$ 1.000,00').should('be.visible');
     cy.contains('Sair').click();
   });
+});
 
+describe('Cenários de erro para Login de user no BugBank', () => {
+  beforeEach(() => {
+    cy.visit('https://bugbank.netlify.app/#');
+  });
   it('Erro de login com usuários não cadastrado', () => {
     const userEmail = 'testeErradoLogin@bugbank.com';
     const userPassword = 'exaltaSambaEraBomDemais123#$';
