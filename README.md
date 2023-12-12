@@ -1,5 +1,7 @@
 # TESTE QA STARBEM
 
+<!-- Repositório: https://github.com/StarBem/qa-technical-test -->
+
 ## Pré-Requisitos
 
 Versão mínima Node: `V16.15.0`. [Instalação Node](https://nodejs.org/en)
