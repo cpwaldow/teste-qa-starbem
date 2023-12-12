@@ -27,9 +27,22 @@ describe('Cenários de testes para Login de user no BugBank', () => {
 
     cy.get('input[type="email"]').first().focus().type(userEmail);
     cy.get('input[type="password"]').first().focus().type(userPassword);
-    cy.get('button[type="submit"]').first().click();
+    cy.contains('Acessar').first().click();
     cy.get('#textName').should('have.text', `Olá ${userName},`);
     cy.contains('bem vindo ao BugBank :)').should('be.visible');
     cy.contains('Sair').click();
+  });
+
+  it('Erro de login com usuários não cadastrado', () => {
+    const userEmail = 'testeErradoLogin@bugbank.com';
+    const userPassword = 'exaltaSambaEraBomDemais123#$';
+
+    cy.get('input[type="email"]').first().focus().type(userEmail);
+    cy.get('input[type="password"]').first().focus().type(userPassword);
+    cy.contains('Acessar').first().click();
+    cy.contains(
+      'Usuário ou senha inválido. Tente novamente ou verifique suas informações',
+    ).should('be.visible');
+    cy.contains('Fechar').click();
   });
 });
