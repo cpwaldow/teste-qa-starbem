@@ -45,4 +45,17 @@ describe('Cenários de testes para Login de user no BugBank', () => {
     ).should('be.visible');
     cy.contains('Fechar').click();
   });
+
+  it('Erro de login com senha inválida', () => {
+    const userEmail = 'testeLogin@bugbank.com';
+    const userPassword = 'turmaDoPagode2023';
+
+    cy.get('input[type="email"]').first().focus().type(userEmail);
+    cy.get('input[type="password"]').first().focus().type(userPassword);
+    cy.contains('Acessar').first().click();
+    cy.contains(
+      'Usuário ou senha inválido. Tente novamente ou verifique suas informações',
+    ).should('be.visible');
+    cy.contains('Fechar').click();
+  });
 });
