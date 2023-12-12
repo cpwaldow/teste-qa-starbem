@@ -11,7 +11,7 @@ Versão mínima Node: `V16.15.0`. [Instalação Node](https://nodejs.org/en)
 1. Clone o repositório:
 
 ```bash
-git clone <git@github.com>:cpwaldow/teste-qa-starbem.git
+git clone git@github.com:cpwaldow/teste-qa-starbem.git
 ```
 
 2. Navegue até o repositório do projeto:
