@@ -91,4 +91,21 @@ describe('Cenários de erro para Login de user no BugBank', () => {
     ).should('be.visible');
     cy.contains('Fechar').click();
   });
+
+  it('Erro ao tentar logar sem preencher os campos obrigatórios', () => {
+    cy.contains('Acessar').first().click();
+    cy.contains('É campo obrigatório').should('be.visible');
+  });
+
+  it('Erro ao tentar logar sem preencher o campos email', () => {
+    cy.get('input[type="email"]').first().focus().type('teste@teste.com');
+    cy.contains('Acessar').first().click();
+    cy.contains('É campo obrigatório').should('be.visible');
+  });
+
+  it('Erro ao tentar logar sem preencher o campos senha', () => {
+    cy.get('input[type="password"]').first().focus().type('vamoquevamo');
+    cy.contains('Acessar').first().click();
+    cy.contains('É campo obrigatório').should('be.visible');
+  });
 });
