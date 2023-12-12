@@ -39,3 +39,7 @@ npm test
 ```bash
 npm run cypress:open
 ```
+
+## Arquivos de testes
+
+Os testes se encontram dentro do diretório `./cypress/e2e/`
