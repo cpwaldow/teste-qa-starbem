@@ -1,6 +1,6 @@
 describe('Cenários de sucesso para Login de user no BugBank', () => {
   beforeEach(() => {
-    cy.visit('https://bugbank.netlify.app/#');
+    cy.visit('https://bugbank.netlify.app/');
   });
 
   it('Fazer login com sucesso - conta sem saldo', () => {
@@ -64,7 +64,7 @@ describe('Cenários de sucesso para Login de user no BugBank', () => {
 
 describe('Cenários de erro para Login de user no BugBank', () => {
   beforeEach(() => {
-    cy.visit('https://bugbank.netlify.app/#');
+    cy.visit('https://bugbank.netlify.app/');
   });
   it('Erro de login com usuários não cadastrado', () => {
     const userEmail = 'testeErradoLogin@bugbank.com';
