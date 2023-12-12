@@ -1,4 +1,4 @@
-describe('Cenários de testes para Cadastro de user no BugBank', () => {
+describe('Cenários de testes com sucesso para Cadastro de user no BugBank', () => {
   const successMsg = /A conta (\d+)-(\d+) foi criada com sucesso/;
 
   beforeEach(() => {
@@ -74,6 +74,12 @@ describe('Cenários de testes para Cadastro de user no BugBank', () => {
     cy.contains(successMsg).should('be.visible');
 
     cy.get('.styles__ContainerCloseButton-sc-8zteav-2 > a').click();
+  });
+});
+
+describe('Cenários de teste com erro para Cadastro de user no BugBank', () => {
+  beforeEach(() => {
+    cy.visit('https://bugbank.netlify.app/#');
   });
 
   it('Cadastrar informações e receber modal de erro de senhas não compatíveis', () => {
