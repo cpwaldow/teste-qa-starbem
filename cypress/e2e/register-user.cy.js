@@ -123,15 +123,11 @@ describe('Cenários de teste com erro para Cadastro de user no BugBank', () => {
     cy.get('#btnCloseModal').click();
   });
 
-  // TODO: Validação de mensagens de erro ao preencher input de forma inválida.
-
-  it.skip('Erro ao tentar enviar o formulário com campo de e-mail inválido', () => {
+  it('Erro ao tentar enviar o formulário com campo de e-mail inválido', () => {
     cy.get('button').contains('Registrar').click();
     cy.wait(100);
 
     cy.get(':nth-child(2) > .input__default').focus().type('input inválido');
-    cy.get('.kOeYBn > .input__warging').should('be.visible', {
-      force: true,
-    });
+    cy.contains('Formato inválido').should('exist');
   });
 });
