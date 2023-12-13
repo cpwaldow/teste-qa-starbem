@@ -160,4 +160,16 @@ describe('Cenários de teste com erro para Cadastro de user no BugBank', () => {
       $form.not().submit();
     });
   });
+
+  it('Tentativa de cadastro sem preencher email deve visualizar a mensagem "Email não pode ser vazio"', () => {
+    cy.get(':nth-child(3) > .input__default').focus().type('Rodrigo Goes');
+    cy.get('input[type="password"]:not(:first)').each(($input) => {
+      cy.get($input).focus().type('123456');
+    });
+    cy.contains('Cadastrar').click({ force: true });
+    cy.contains('É campo obrigatório').should('exist');
+    cy.get('.card__register').should(($form) => {
+      $form.not().submit();
+    });
+  });
 });
