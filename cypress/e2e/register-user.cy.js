@@ -1,4 +1,4 @@
-describe.skip('Cenários de testes com sucesso para Cadastro de user no BugBank', () => {
+describe('Cenários de testes com sucesso para Cadastro de user no BugBank', () => {
   const successMsg = /A conta (\d+)-(\d+) foi criada com sucesso/;
 
   beforeEach(() => {
