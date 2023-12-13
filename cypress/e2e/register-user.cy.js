@@ -3,14 +3,13 @@ describe('Cenários de testes com sucesso para Cadastro de user no BugBank', () 
 
   beforeEach(() => {
     cy.visit('https://bugbank.netlify.app/');
+    cy.get('button').contains('Registrar').click();
   });
 
   it('Cadastrar informações e fechar modal de sucesso no botão "Fechar"', () => {
     const userEmail = 'newTestUser@bugbank.com';
     const userName = 'Maria Alice da Silva Sauro';
     const userPassword = 'senhaMaisDoQueSegura';
-    cy.get('button').contains('Registrar').click();
-    cy.wait(100);
 
     cy.get(':nth-child(2) > .input__default').focus().type(userEmail);
 
@@ -45,9 +44,6 @@ describe('Cenários de testes com sucesso para Cadastro de user no BugBank', () 
     const userPassword = 'senhaMaisDoQueSeguraSeguraca';
     const userName = 'Anderson Silva';
 
-    cy.get('button').contains('Registrar').click();
-    cy.wait(100);
-
     cy.get(':nth-child(2) > .input__default').focus().type(userEmail);
 
     cy.get(':nth-child(3) > .input__default').focus().type(userName);
@@ -80,6 +76,7 @@ describe('Cenários de testes com sucesso para Cadastro de user no BugBank', () 
 describe('Cenários de teste com erro para Cadastro de user no BugBank', () => {
   beforeEach(() => {
     cy.visit('https://bugbank.netlify.app/');
+    cy.get('button').contains('Registrar').click();
   });
 
   it('Cadastrar informações e receber modal de erro de senhas não compatíveis', () => {
@@ -87,9 +84,6 @@ describe('Cenários de teste com erro para Cadastro de user no BugBank', () => {
     const userPassword = '12345678';
     const userName = 'André Nascimento';
     const passwordErrorMsg = 'As senhas não são iguais.';
-
-    cy.get('button').contains('Registrar').click();
-    cy.wait(100);
 
     cy.get(':nth-child(2) > .input__default').focus().type(userEmail);
 
@@ -124,9 +118,6 @@ describe('Cenários de teste com erro para Cadastro de user no BugBank', () => {
   });
 
   it('Erro ao tentar enviar o formulário com campo de e-mail inválido', () => {
-    cy.get('button').contains('Registrar').click();
-    cy.wait(100);
-
     cy.get(':nth-child(2) > .input__default').focus().type('input inválido');
     cy.get(':nth-child(3) > .input__default').focus().type('Natássia Ribeiro');
 
@@ -141,4 +132,6 @@ describe('Cenários de teste com erro para Cadastro de user no BugBank', () => {
       $form.not().submit();
     });
   });
+
+  it('Tentativa de cadastro sem preencher confirmação de senha deve visualizar a mensagem "Confirmar senha não pode ser vazio"', () => {});
 });
