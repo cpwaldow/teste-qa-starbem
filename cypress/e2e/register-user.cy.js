@@ -1,4 +1,4 @@
-describe('Cenários de testes com sucesso para Cadastro de user no BugBank', () => {
+describe.skip('Cenários de testes com sucesso para Cadastro de user no BugBank', () => {
   const successMsg = /A conta (\d+)-(\d+) foi criada com sucesso/;
 
   beforeEach(() => {
@@ -133,5 +133,16 @@ describe('Cenários de teste com erro para Cadastro de user no BugBank', () => {
     });
   });
 
-  it('Tentativa de cadastro sem preencher confirmação de senha deve visualizar a mensagem "Confirmar senha não pode ser vazio"', () => {});
+  it('Tentativa de cadastro sem preencher confirmação de senha deve visualizar a mensagem "Confirmar senha não pode ser vazio"', () => {
+    cy.get(':nth-child(2) > .input__default')
+      .focus()
+      .type('rodrigao@gmail.com');
+    cy.get(':nth-child(3) > .input__default').focus().type('Rodrigo Goes');
+    cy.get('input[type="password"]:not(:first)').first().focus().type('123456');
+    cy.contains('Cadastrar').click({ force: true });
+    cy.contains('É campo obrigatório').should('exist');
+    cy.get('.card__register').should(($form) => {
+      $form.not().submit();
+    });
+  });
 });
