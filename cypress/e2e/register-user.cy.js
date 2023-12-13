@@ -128,6 +128,17 @@ describe('Cenários de teste com erro para Cadastro de user no BugBank', () => {
     cy.wait(100);
 
     cy.get(':nth-child(2) > .input__default').focus().type('input inválido');
+    cy.get(':nth-child(3) > .input__default').focus().type('Natássia Ribeiro');
+
+    cy.get('input[type="password"]:not(:first)').each(($input) => {
+      cy.get($input).should('have.attr', 'type').and('equal', 'password');
+      cy.get($input).focus().type('abcdefg');
+    });
+
     cy.contains('Formato inválido').should('exist');
+    cy.contains('Cadastrar').click({ force: true });
+    cy.get('.card__register').should(($form) => {
+      $form.not().submit();
+    });
   });
 });
