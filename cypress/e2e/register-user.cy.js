@@ -172,4 +172,19 @@ describe('Cenários de teste com erro para Cadastro de user no BugBank', () => {
       $form.not().submit();
     });
   });
+
+  it('Tentativa de cadastro sem preencher nome deve visualizar a mensagem "Nome não pode ser vazio"', () => {
+    cy.get(':nth-child(2) > .input__default')
+      .focus()
+      .type('rodrigao@gmail.com');
+    cy.get('input[type="password"]:not(:first)').each(($input) => {
+      cy.get($input).focus().type('123456');
+    });
+    cy.contains('Cadastrar').click({ force: true });
+    cy.get('.card__register').should(($form) => {
+      $form.not().submit();
+    });
+    cy.contains('Nome não pode ser vazio.').should('exist');
+    cy.contains('Fechar').click();
+  });
 });
