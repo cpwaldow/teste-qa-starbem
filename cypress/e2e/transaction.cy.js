@@ -8,7 +8,6 @@ describe('Transição aprovadas entre contas', () => {
     const FirstName = 'Vanessa Paixão';
 
     cy.contains('Registrar').click();
-    cy.wait(100);
 
     cy.get(':nth-child(2) > .input__default').focus().type(firstEmail);
 
@@ -29,7 +28,6 @@ describe('Transição aprovadas entre contas', () => {
     const userName = 'Thiago Maia';
 
     cy.contains('Registrar').click();
-    cy.wait(100);
 
     cy.get('input').each(($input) => {
       cy.get($input).focus().clear();
@@ -84,4 +82,6 @@ describe('Transição aprovadas entre contas', () => {
     cy.contains('Saldo em conta R$ 500,00');
     cy.contains('Sair').click();
   });
+
+  it('Tentativa de transferência para conta inválida deve exibir mensagem de erro "Conta inválida ou inexistente"', () => {});
 });

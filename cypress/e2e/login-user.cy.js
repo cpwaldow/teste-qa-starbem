@@ -9,7 +9,6 @@ describe('Cenários de sucesso para Login de user no BugBank', () => {
     const userName = 'Pericles da Silva';
 
     cy.get('button').contains('Registrar').click();
-    cy.wait(100);
 
     cy.get(':nth-child(2) > .input__default').focus().type(userEmail);
 
@@ -38,7 +37,6 @@ describe('Cenários de sucesso para Login de user no BugBank', () => {
     const userName = 'Pericles da Silva';
 
     cy.get('button').contains('Registrar').click();
-    cy.wait(100);
 
     cy.get(':nth-child(2) > .input__default').focus().type(userEmail);
 
